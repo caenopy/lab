@@ -40,6 +40,104 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-39",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 771.0, 149.543235629796982, 32.0, 20.0 ],
+					"text" : "open"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-36",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patcher" : 					{
+						"fileversion" : 1,
+						"appversion" : 						{
+							"major" : 8,
+							"minor" : 5,
+							"revision" : 6,
+							"architecture" : "x64",
+							"modernui" : 1
+						}
+,
+						"classnamespace" : "box",
+						"rect" : [ 59.0, 119.0, 640.0, 480.0 ],
+						"bglocked" : 0,
+						"openinpresentation" : 0,
+						"default_fontsize" : 12.0,
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"gridonopen" : 1,
+						"gridsize" : [ 15.0, 15.0 ],
+						"gridsnaponopen" : 1,
+						"objectsnaponopen" : 1,
+						"statusbarvisible" : 2,
+						"toolbarvisible" : 1,
+						"lefttoolbarpinned" : 0,
+						"toptoolbarpinned" : 0,
+						"righttoolbarpinned" : 0,
+						"bottomtoolbarpinned" : 0,
+						"toolbars_unpinned_last_save" : 0,
+						"tallnewobj" : 0,
+						"boxanimatetime" : 200,
+						"enablehscroll" : 1,
+						"enablevscroll" : 1,
+						"devicewidth" : 0.0,
+						"description" : "",
+						"digest" : "",
+						"tags" : "",
+						"style" : "",
+						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
+						"boxes" : [ 							{
+								"box" : 								{
+									"comment" : "",
+									"id" : "obj-1",
+									"index" : 1,
+									"maxclass" : "inlet",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 227.0, 124.0, 30.0, 30.0 ]
+								}
+
+							}
+ ],
+						"lines" : [  ]
+					}
+,
+					"patching_rect" : [ 771.0, 246.901530265808105, 35.0, 20.0 ],
+					"saved_object_attributes" : 					{
+						"description" : "",
+						"digest" : "",
+						"globalpatchername" : "",
+						"tags" : ""
+					}
+,
+					"text" : "p test"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 771.0, 203.0, 48.0, 20.0 ],
+					"text" : "pcontrol"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-23",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -55,7 +153,7 @@
 					}
 ,
 					"text" : "Nic Becker (caenopy), 2024",
-					"textcolor" : [ 1.0, 0.709803921568627, 0.196078431372549, 1.0 ]
+					"textcolor" : [ 0.952941176470588, 0.580392156862745, 0.125490196078431, 1.0 ]
 				}
 
 			}
@@ -65,7 +163,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 643.150638163089752, 65.753419876098633, 150.0, 18.0 ],
+					"patching_rect" : [ 658.150638163089752, 60.753419876098633, 150.0, 18.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 563.013657689094543, 10.074293494224548, 150.0, 18.0 ],
 					"saved_attribute_attributes" : 					{
@@ -75,8 +173,8 @@
 
 					}
 ,
-					"text" : "Lab v0.2.0",
-					"textcolor" : [ 1.0, 0.709803921568627, 0.196078431372549, 1.0 ]
+					"text" : "Lab v0.2.1",
+					"textcolor" : [ 0.952941176470588, 0.580392156862745, 0.125490196078431, 1.0 ]
 				}
 
 			}
@@ -400,7 +498,7 @@
 					}
 ,
 					"text" : "0%",
-					"textcolor" : [ 1.0, 0.709803921568627, 0.196078431372549, 1.0 ],
+					"textcolor" : [ 0.952941176470588, 0.580392156862745, 0.125490196078431, 1.0 ],
 					"textjustification" : 2
 				}
 
@@ -419,11 +517,11 @@
 			}
 , 			{
 				"box" : 				{
-					"bgcolor" : [ 0.156862745098039, 0.156862745098039, 0.156862745098039, 1.0 ],
-					"elementcolor" : [ 0.156862745098039, 0.156862745098039, 0.156862745098039, 1.0 ],
+					"bgcolor" : [ 0.019607843137255, 0.019607843137255, 0.019607843137255, 1.0 ],
+					"elementcolor" : [ 0.019607843137255, 0.019607843137255, 0.019607843137255, 1.0 ],
 					"id" : "obj-33",
 					"ignoreclick" : 1,
-					"knobcolor" : [ 1.0, 0.709803921568627, 0.196078431372549, 1.0 ],
+					"knobcolor" : [ 0.952941176470588, 0.580392156862745, 0.125490196078431, 1.0 ],
 					"knobshape" : 4,
 					"maxclass" : "slider",
 					"numinlets" : 1,
@@ -710,7 +808,7 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.156862745098039, 0.156862745098039, 0.156862745098039, 1.0 ],
+					"bgcolor" : [ 0.019607843137255, 0.019607843137255, 0.019607843137255, 1.0 ],
 					"id" : "obj-63",
 					"maxclass" : "panel",
 					"mode" : 0,
@@ -750,7 +848,7 @@
 					}
 ,
 					"text" : "waiting",
-					"textcolor" : [ 1.0, 0.709803921568627, 0.196078431372549, 1.0 ]
+					"textcolor" : [ 0.952941176470588, 0.580392156862745, 0.125490196078431, 1.0 ]
 				}
 
 			}
@@ -808,7 +906,7 @@
 					}
 ,
 					"text" : "http://127.0...",
-					"textcolor" : [ 1.0, 0.709803921568627, 0.196078431372549, 1.0 ]
+					"textcolor" : [ 0.952941176470588, 0.580392156862745, 0.125490196078431, 1.0 ]
 				}
 
 			}
@@ -844,7 +942,7 @@
 					}
 ,
 					"text" : "Model",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+					"textcolor" : [ 0.862745098039216, 0.862745098039216, 0.862745098039216, 1.0 ]
 				}
 
 			}
@@ -868,7 +966,7 @@
 					}
 ,
 					"text" : "Controls",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+					"textcolor" : [ 0.862745098039216, 0.862745098039216, 0.862745098039216, 1.0 ]
 				}
 
 			}
@@ -1529,7 +1627,7 @@
 , 			{
 				"box" : 				{
 					"angle" : 270.0,
-					"bgcolor" : [ 0.156862745098039, 0.156862745098039, 0.156862745098039, 1.0 ],
+					"bgcolor" : [ 0.019607843137255, 0.019607843137255, 0.019607843137255, 1.0 ],
 					"id" : "obj-50",
 					"maxclass" : "panel",
 					"mode" : 0,
@@ -1882,6 +1980,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-39", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-3852", 0 ],
 					"source" : [ "obj-392", 0 ]
 				}
@@ -1908,6 +2013,13 @@
 					"destination" : [ "obj-7", 0 ],
 					"midpoints" : [ 99.576815813779831, 438.0, 144.0, 438.0, 144.0, 498.034483075141907, 69.0, 498.034483075141907, 69.0, 498.0, 53.365420833230019, 498.0 ],
 					"source" : [ "obj-3939", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-36", 0 ],
+					"source" : [ "obj-4", 0 ]
 				}
 
 			}
@@ -2151,14 +2263,14 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "clipSpaceName.js",
-				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Generate/code",
+				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Lab/code",
 				"patcherrelativepath" : "../code",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "drawTracks.js",
-				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Generate/code",
+				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Lab/code",
 				"patcherrelativepath" : "../code",
 				"type" : "TEXT",
 				"implicit" : 1
@@ -2171,49 +2283,49 @@
 			}
 , 			{
 				"name" : "getArrangementState.js",
-				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Generate/code",
+				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Lab/code",
 				"patcherrelativepath" : "../code",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "getClipNotesFromState.js",
-				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Generate/code",
+				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Lab/code",
 				"patcherrelativepath" : "../code",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "getEmptyClipIds.js",
-				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Generate/code",
+				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Lab/code",
 				"patcherrelativepath" : "../code",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "getFilePath.js",
-				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Generate/code",
+				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Lab/code",
 				"patcherrelativepath" : "../code",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "getTrackInfo.js",
-				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Generate/code",
+				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Lab/code",
 				"patcherrelativepath" : "../code",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "gradio.js",
-				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Generate/node_content/dist",
+				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Lab/node_content/dist",
 				"patcherrelativepath" : "../node_content/dist",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "multimap-unmap.svg",
-				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Generate/media",
+				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Lab/media",
 				"patcherrelativepath" : "../media",
 				"type" : "svg",
 				"implicit" : 1
@@ -2232,28 +2344,28 @@
 			}
 , 			{
 				"name" : "sr-arrow-down-11x11.svg",
-				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Generate/media",
+				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Lab/media",
 				"patcherrelativepath" : "../media",
 				"type" : "svg",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "sr-arrow-right-11x11.svg",
-				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Generate/media",
+				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Lab/media",
 				"patcherrelativepath" : "../media",
 				"type" : "svg",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "updateProgress.js",
-				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Generate/code",
+				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Lab/code",
 				"patcherrelativepath" : "../code",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "writeNote.js",
-				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Generate/code",
+				"bootpath" : "~/Desktop/anticipation/anticipation-interface/Lab/code",
 				"patcherrelativepath" : "../code",
 				"type" : "TEXT",
 				"implicit" : 1

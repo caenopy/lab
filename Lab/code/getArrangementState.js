@@ -48,7 +48,6 @@ function getNotesInLoop() {
     // First keep a list of all unstaged tracks. TODO: handle this in the main loop.
     var unstagedTrackIDs = [];
     for (var i = 0; i < numMidiTracks; i++) {
-        post('i: ' + i + '\n')
         var staged = parseInt(trackInfo.get(i + "::staged"));
         if (staged === 0) {
             unstagedTrackIDs.push(parseInt(trackInfo.get(i + "::trackId")));
@@ -76,7 +75,6 @@ function getNotesInLoop() {
         // Skip unstaged tracks
         var trackID = trackIDs[1 + 2*i];
         for (var j = 0; j < unstagedTrackIDs.length; j++) {
-            post('Comparing trackID: ' + trackID + ' to unstagedTrackID: ' + unstagedTrackIDs[j] + '\n')
             if (parseInt(trackID) === unstagedTrackIDs[j]) {
                 skipTrack = true;
                 continue;

@@ -41,7 +41,9 @@ function clear() {
             obj.maxclass === "js" && obj.varname && obj.varname.indexOf("jso2_") === 0 ||
             obj.maxclass === "deferlow" && obj.varname && obj.varname.indexOf("dl_") === 0 ||
             obj.maxclass === "prepend" && obj.varname && obj.varname.indexOf("stagepp_") === 0 ||
-            obj.maxclass === "dict" && obj.varname && obj.varname.indexOf("stagedict_") === 0
+            obj.maxclass === "dict" && obj.varname && obj.varname.indexOf("stagedict_") === 0 ||
+            obj.maxclass === "prepend" && obj.varname && obj.varname.indexOf("menupp_") === 0 ||
+            obj.maxclass === "js" && obj.varname && obj.varname.indexOf("menujso_") === 0
             ) {
             myPatcher.remove(obj);
         }
@@ -81,6 +83,8 @@ function updateOrCreateRect(trackId, trackName, trackColor, instrumentId, index)
     var stage = myPatcher.getnamed("stage_" + index);
     var stagepp = myPatcher.getnamed("stagepp_" + index);
     var stagedict = myPatcher.getnamed("stagedict_" + index);
+    var menupp = myPatcher.getnamed("menupp_" + index);
+    var menujso = myPatcher.getnamed("menujso_" + index);
 
     // INTERFACE:
 
@@ -108,12 +112,12 @@ function updateOrCreateRect(trackId, trackName, trackColor, instrumentId, index)
         stage.message("set", 1);
         myPatcher.message("script", "bringtofront", "stage_" + index);
 
-        stagepp = myPatcher.newdefault(460, 30 + (index * 17), "prepend");
+        stagepp = myPatcher.newdefault(500, 30 + (index * 17), "prepend");
         stagepp.varname = "stagepp_" + index;
         stagepp.message("set", "set", index + "::staged");
         myPatcher.connect(stage, 0, stagepp, 0);
 
-        stagedict = myPatcher.newdefault(520, 30 + (index * 17), "dict");
+        stagedict = myPatcher.newdefault(510, 30 + (index * 17), "dict");
         stagedict.varname = "stagedict_" + index;
         stagedict.message("name", "trackInfo");
         myPatcher.connect(stagepp, 0, stagedict, 0);
@@ -132,6 +136,16 @@ function updateOrCreateRect(trackId, trackName, trackColor, instrumentId, index)
         menu.message("presentation", 1);
         menu.message("appearance", 1);
         myPatcher.message("script", "bringtofront", "trackMenu_" + index);
+    
+        menupp = myPatcher.newdefault(520, 30 + (index * 17), "prepend");
+        menupp.varname = "menupp_" + index;
+        menupp.message("set", "instrChange", index);
+        myPatcher.connect(menu, 0, menupp, 0)
+
+        menujso = myPatcher.newdefault(530, 30 + (index * 17), "js");
+        menujso.varname = "menujso_" + index;
+        menujso.message("filename", "setTrackNameInstr.js");
+        myPatcher.connect(menupp, 0, menujso, 0);
     }
     // Update properties for live.menu
     var menuItemsMsg = ["_parameter_range"].concat(generalMidiInstruments);
@@ -222,9 +236,6 @@ function updateOrCreateRect(trackId, trackName, trackColor, instrumentId, index)
     myPatcher.connect(lo, 0, pp, 0);
     myPatcher.connect(pp, 0, jso1, 0);
     myPatcher.connect(pp, 0, jso2, 0);
-
-
-    // TODO: output on instrument should write to track name / trackInfo???
 
 }
 
