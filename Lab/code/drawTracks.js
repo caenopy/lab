@@ -77,7 +77,7 @@ function nameChange(index, nm) {
     comment.message("set", clippedTrackName);
 }
 
-function updateOrCreateRect(trackId, trackName, trackColor, instrumentId, index) {
+function updateOrCreateRect(trackId, trackName, trackColor, instrumentId, index, midiTrackIndex) {
     var rect = myPatcher.getnamed("trackRect_" + index);
     var menu = myPatcher.getnamed("trackMenu_" + index);
     var stage = myPatcher.getnamed("stage_" + index);
@@ -90,7 +90,7 @@ function updateOrCreateRect(trackId, trackName, trackColor, instrumentId, index)
 
     if (!rect) {
         // Create new rectangle
-        rect = myPatcher.newdefault(210, 30 + (index * 17), "panel");
+        rect = myPatcher.newdefault(210, 30 + (midiTrackIndex * 17), "panel");
         rect.varname = "trackRect_" + index;
         rect.border(0);
         rect.size(86, 15);
@@ -103,7 +103,7 @@ function updateOrCreateRect(trackId, trackName, trackColor, instrumentId, index)
 
     if (!stage) {
         // Create new live.text
-        stage = myPatcher.newdefault(300, 30 + (index * 17), "live.text");
+        stage = myPatcher.newdefault(300, 30 + (midiTrackIndex * 17), "live.text");
         stage.varname = "stage_" + index;
         stage.size(53, 15);
         stage.message("_parameter_invisible", 2);
@@ -112,12 +112,12 @@ function updateOrCreateRect(trackId, trackName, trackColor, instrumentId, index)
         stage.message("set", 1);
         myPatcher.message("script", "bringtofront", "stage_" + index);
 
-        stagepp = myPatcher.newdefault(500, 30 + (index * 17), "prepend");
+        stagepp = myPatcher.newdefault(500, 30 + (midiTrackIndex * 17), "prepend");
         stagepp.varname = "stagepp_" + index;
         stagepp.message("set", "set", index + "::staged");
         myPatcher.connect(stage, 0, stagepp, 0);
 
-        stagedict = myPatcher.newdefault(510, 30 + (index * 17), "dict");
+        stagedict = myPatcher.newdefault(510, 30 + (midiTrackIndex * 17), "dict");
         stagedict.varname = "stagedict_" + index;
         stagedict.message("name", "trackInfo");
         myPatcher.connect(stagepp, 0, stagedict, 0);
@@ -129,7 +129,7 @@ function updateOrCreateRect(trackId, trackName, trackColor, instrumentId, index)
 
     if (!menu) {
         // Create new live.menu
-        menu = myPatcher.newdefault(355, 30 + (index * 17), "live.menu");
+        menu = myPatcher.newdefault(355, 30 + (midiTrackIndex * 17), "live.menu");
         menu.varname = "trackMenu_" + index;
         menu.size(140, 20);
         menu.message("_parameter_invisible", 2);
@@ -137,12 +137,12 @@ function updateOrCreateRect(trackId, trackName, trackColor, instrumentId, index)
         menu.message("appearance", 1);
         myPatcher.message("script", "bringtofront", "trackMenu_" + index);
     
-        menupp = myPatcher.newdefault(520, 30 + (index * 17), "prepend");
+        menupp = myPatcher.newdefault(520, 30 + (midiTrackIndex * 17), "prepend");
         menupp.varname = "menupp_" + index;
         menupp.message("set", "instrChange", index);
         myPatcher.connect(menu, 0, menupp, 0)
 
-        menujso = myPatcher.newdefault(530, 30 + (index * 17), "js");
+        menujso = myPatcher.newdefault(530, 30 + (midiTrackIndex * 17), "js");
         menujso.varname = "menujso_" + index;
         menujso.message("filename", "setTrackNameInstr.js");
         myPatcher.connect(menupp, 0, menujso, 0);
@@ -156,7 +156,7 @@ function updateOrCreateRect(trackId, trackName, trackColor, instrumentId, index)
 
     if (!comment) {
         // Create new comment object
-        comment = myPatcher.newdefault(210, 30 + (index * 17), "comment");
+        comment = myPatcher.newdefault(210, 30 + (midiTrackIndex * 17), "comment");
         comment.varname = "trackName_" + index;
         comment.size(100, 15);
         comment.message("presentation", 1);
@@ -182,31 +182,31 @@ function updateOrCreateRect(trackId, trackName, trackColor, instrumentId, index)
     var jso2 = myPatcher.getnamed("jso2_" + index);
 
     if (!mes2) {
-        mes2 = myPatcher.newdefault(210, 350 + (index * 300), "message");
+        mes2 = myPatcher.newdefault(210, 350 + (midiTrackIndex * 300), "message");
         mes2.varname = "mes2_" + index;
         mes2.message("set", "path", "live_set", "tracks", index);
     }
 
     if (!lp) {
-        lp = myPatcher.newdefault(210, 400 + (index * 300), "live.path");
+        lp = myPatcher.newdefault(210, 400 + (midiTrackIndex * 300), "live.path");
         lp.varname = "lp_" + index;
         //lp.message("path", "live_set", "tracks", index);
     }
 
     if (!mes1) {
-        mes1 = myPatcher.newdefault(210, 460 + (index * 300), "message");
+        mes1 = myPatcher.newdefault(210, 460 + (midiTrackIndex * 300), "message");
         mes1.varname = "mes1_" + index;
         mes1.message("set", "property", "name");
     }
 
     if (!dl) {
-        dl = myPatcher.newdefault(240, 430 + (index * 300), "deferlow");
+        dl = myPatcher.newdefault(240, 430 + (midiTrackIndex * 300), "deferlow");
         dl.varname = "dl_" + index;
         myPatcher.connect(lp, 1, dl, 0);
     }
 
     if (!lo) {
-        lo = myPatcher.newdefault(210, 490 + (index * 300), "live.observer");
+        lo = myPatcher.newdefault(210, 490 + (midiTrackIndex * 300), "live.observer");
         lo.varname = "lo_" + index;
         myPatcher.connect(dl, 0, lo, 1);
         myPatcher.connect(mes1, 0, lo, 0);
@@ -216,19 +216,19 @@ function updateOrCreateRect(trackId, trackName, trackColor, instrumentId, index)
     }
 
     if (!pp) {
-        pp = myPatcher.newdefault(210, 520 + (index * 300), "prepend");
+        pp = myPatcher.newdefault(210, 520 + (midiTrackIndex * 300), "prepend");
         pp.varname = "pp_" + index;
         pp.message("set", "nameChange", index);
     }
 
     if (!jso1) {
-        jso1 = myPatcher.newdefault(210, 550 + (index * 300), "js");
+        jso1 = myPatcher.newdefault(210, 550 + (midiTrackIndex * 300), "js");
         jso1.varname = "jso1_" + index;
         jso1.message("filename", "getTrackInfo.js");
     }
 
     if (!jso2) {
-        jso2 = myPatcher.newdefault(350, 550 + (index * 300), "js");
+        jso2 = myPatcher.newdefault(350, 550 + (midiTrackIndex * 300), "js");
         jso2.varname = "jso2_" + index;
         jso2.message("filename", "drawTracks.js");
     }
@@ -239,7 +239,6 @@ function updateOrCreateRect(trackId, trackName, trackColor, instrumentId, index)
 
 }
 
-
 function bang() {
     myPatcher = this.patcher;
     var liveSetApi = new LiveAPI("live_set");
@@ -247,12 +246,21 @@ function bang() {
     var trackInfo = new Dict("trackInfo");
     var numTracks = trackInfo.getkeys().length; //liveSetApi.getcount("tracks");
 
+    var midiTrackNum = 0;
+
     for (var i = 0; i < numTracks; i++) { 
         var trackId = trackInfo.get(i + "::trackId");
         var trackName = trackInfo.get(i + "::trackName");
         var trackColor = trackInfo.get(i + "::trackColor");
         var instrumentId = trackInfo.get(i + "::instrumentId");
+        var hasMidiInput = trackInfo.get(i + "::hasMidiInput");
 
-        updateOrCreateRect(trackId, trackName, trackColor, instrumentId, i); 
+        if (hasMidiInput === 0) {
+            continue;
+        }
+
+        updateOrCreateRect(trackId, trackName, trackColor, instrumentId, i, midiTrackNum);
+        
+        midiTrackNum++;
     }
 }

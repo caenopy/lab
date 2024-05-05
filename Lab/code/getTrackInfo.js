@@ -52,6 +52,7 @@ function getTrackInfo() {
 		var color = parseFloat(trackApi.get("color"));
 		var nm = trackApi.get("name");
 		var id = parseInt(trackApi.id);
+		var hasMidiInput = parseFloat(trackApi.get("has_midi_input"));
 
 		var red = (color >> 16) & 0xFF;
 		var green = (color >> 8) & 0xFF;
@@ -70,15 +71,13 @@ function getTrackInfo() {
 		if (name_pn === null) { error("Invalid format for track name. Use: 'name [program number]'"); continue; }
 
 		trackIds.push(id);
-		trackColors.push(rgba);
-		trackNames.push(name_pn.text);
-		trackInstrumentIds.push(name_pn.number);
 
 		trackInfoJson[i] = {
 			"trackId": id,
 			"trackColor": rgba,
 			"trackName": name_pn.text,
-			"instrumentId": name_pn.number
+			"instrumentId": name_pn.number,
+			"hasMidiInput": hasMidiInput
 		};
     }
 
