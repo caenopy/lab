@@ -1,0 +1,22 @@
+{
+  "main": "gradio.js",
+  "keywords": [],
+  "name": "m4l-infilling",
+  "version": "0.0.0",
+  "description": "Symbolic music infilling models in Max for Live.",
+  "author": "caenopy",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@gradio/client": "0.12.0",
+    "@types/max-api": "2.0.3",
+    "eventsource": "2.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "typescript": "^5.4.5"
+  },
+  "scripts": {
+    "build": "esbuild ./src/gradio.ts --platform=node --bundle '--external:max-api' --format=cjs --outdir=./dist",
+    "watch": "esbuild ./src/gradio.ts --platform=node --bundle '--external:max-api' --format=cjs --outdir=./dist --watch"
+  }
+}

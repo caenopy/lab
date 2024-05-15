@@ -2,6 +2,10 @@ Lab/node_content/node_modules/
 Lab/midifiles/
 Lab/tmp/
 
+LabLoop/node_content/node_modules/
+LabLoop/midifiles/
+LabLoop/tmp/
+
 .DS_Store
 .DS_Store?
 ._*
