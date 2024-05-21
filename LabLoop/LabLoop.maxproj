@@ -2,8 +2,8 @@
 	"name" : "LabLoop",
 	"version" : 1,
 	"creationdate" : 3781297746,
-	"modificationdate" : 3798591236,
-	"viewrect" : [ 144.0, 328.0, 297.0, 492.0 ],
+	"modificationdate" : 3799115312,
+	"viewrect" : [ 299.0, 332.0, 297.0, 492.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -14,6 +14,11 @@
 				"kind" : "patcher",
 				"local" : 1,
 				"toplevel" : 1
+			}
+,
+			"LabHost.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
 			}
 
 		}
@@ -42,16 +47,6 @@
 		}
 ,
 		"code" : 		{
-			"gradio.js" : 			{
-				"kind" : "javascript",
-				"local" : 1,
-				"singleton" : 				{
-					"bootpath" : "~/Desktop/anticipation/lab/LabLoop/node_content/dist",
-					"projectrelativepath" : "./node_content/dist"
-				}
-
-			}
-,
 			"clipSpaceName.js" : 			{
 				"kind" : "javascript",
 				"local" : 1
@@ -83,6 +78,11 @@
 			}
 ,
 			"getTrackInfo.js" : 			{
+				"kind" : "javascript",
+				"local" : 1
+			}
+,
+			"gradio.js" : 			{
 				"kind" : "javascript",
 				"local" : 1
 			}
