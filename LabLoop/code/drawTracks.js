@@ -17,9 +17,8 @@ function extractParts(inputString) {
             number: parseInt(match[2], 10) // Captured number, converted to integer
         };
     } else {
-        post("No match for string.")
         return {
-            text: inputString,   
+            text: inputString.replace(/['"]/g, ''),   
             number: 0
         };
     }
