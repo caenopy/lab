@@ -2,18 +2,38 @@
 	"name" : "Lab",
 	"version" : 1,
 	"creationdate" : 3781297746,
-	"modificationdate" : 3796843162,
-	"viewrect" : [ 125.0, 381.0, 297.0, 492.0 ],
+	"modificationdate" : 3802871211,
+	"viewrect" : [ 226.0, 344.0, 297.0, 466.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
 	"autolocalize" : 0,
 	"contents" : 	{
 		"patchers" : 		{
+			"LabGUI.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"LabWindowGUI.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/Desktop/anticipation/lab/Lab/patchers",
+					"projectrelativepath" : "./patchers"
+				}
+
+			}
+,
 			"LabPatch.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1,
-				"toplevel" : 1
+				"toplevel" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/Desktop/anticipation/lab/Lab/patchers",
+					"projectrelativepath" : "./patchers"
+				}
+
 			}
 
 		}
@@ -42,16 +62,6 @@
 		}
 ,
 		"code" : 		{
-			"gradio.js" : 			{
-				"kind" : "javascript",
-				"local" : 1,
-				"singleton" : 				{
-					"bootpath" : "~/Desktop/anticipation/anticipation-interface/Lab/node_content/dist",
-					"projectrelativepath" : "./node_content/dist"
-				}
-
-			}
-,
 			"clipSpaceName.js" : 			{
 				"kind" : "javascript",
 				"local" : 1
@@ -87,6 +97,11 @@
 				"local" : 1
 			}
 ,
+			"gradio.js" : 			{
+				"kind" : "javascript",
+				"local" : 1
+			}
+,
 			"updateProgress.js" : 			{
 				"kind" : "javascript",
 				"local" : 1
@@ -99,7 +114,12 @@
 ,
 			"density.js" : 			{
 				"kind" : "javascript",
-				"local" : 1
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/Desktop/anticipation/lab/Lab/node_content/dist",
+					"projectrelativepath" : "./node_content/dist"
+				}
+
 			}
 
 		}
@@ -112,7 +132,7 @@
 ,
 	"searchpath" : 	{
 		"0" : 		{
-			"bootpath" : "~/Desktop/anticipation/anticipation-interface/Lab/node_content",
+			"bootpath" : "~/Desktop/anticipation/lab/Lab/node_content",
 			"projectrelativepath" : "./node_content",
 			"label" : "Node Content",
 			"recursive" : 1,
@@ -121,7 +141,7 @@
 		}
 ,
 		"1" : 		{
-			"bootpath" : "~/Desktop/anticipation/anticipation-interface/Lab/code",
+			"bootpath" : "~/Desktop/anticipation/lab/Lab/code",
 			"projectrelativepath" : "./code",
 			"label" : "js",
 			"recursive" : 1,
