@@ -7,6 +7,11 @@ var clips = [];
 
 function list() {
     clips = arguments;
+    post("(getClipNotesFromState.js) Setting clip_ids to: ", clips, "\n");
+}
+
+function printClips() {
+    post("(getClipNotesFromState.js) Clips: ", clips, "\n");
 }
 
 function openJsonFile(filename) {
@@ -51,6 +56,8 @@ function tracks(arrangementState) {;
 
 function getNotesFromClips(jsonData, clipIds) {
     var notesList = [];
+
+    post("(getClipNotesFromState.js) using clipIds: ", clips, "\n");
 
     jsonData.forEach(function(track) {
         track.clips.forEach(function(clip) {
