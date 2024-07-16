@@ -2,8 +2,8 @@
 	"name" : "Lab",
 	"version" : 1,
 	"creationdate" : 3781297746,
-	"modificationdate" : 3802871211,
-	"viewrect" : [ 226.0, 344.0, 297.0, 466.0 ],
+	"modificationdate" : 3804014040,
+	"viewrect" : [ 783.0, -876.0, 297.0, 466.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -29,6 +29,16 @@
 				"kind" : "patcher",
 				"local" : 1,
 				"toplevel" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/Desktop/anticipation/lab/Lab/patchers",
+					"projectrelativepath" : "./patchers"
+				}
+
+			}
+,
+			"LivePrototyping.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1,
 				"singleton" : 				{
 					"bootpath" : "~/Desktop/anticipation/lab/Lab/patchers",
 					"projectrelativepath" : "./patchers"
@@ -132,18 +142,18 @@
 ,
 	"searchpath" : 	{
 		"0" : 		{
-			"bootpath" : "~/Desktop/anticipation/lab/Lab/node_content",
-			"projectrelativepath" : "./node_content",
-			"label" : "Node Content",
+			"bootpath" : "~/Desktop/anticipation/lab/Lab/code",
+			"projectrelativepath" : "./code",
+			"label" : "js",
 			"recursive" : 1,
 			"enabled" : 1,
 			"includeincollective" : 1
 		}
 ,
 		"1" : 		{
-			"bootpath" : "~/Desktop/anticipation/lab/Lab/code",
-			"projectrelativepath" : "./code",
-			"label" : "js",
+			"bootpath" : "~/Desktop/anticipation/lab/Lab/node_content",
+			"projectrelativepath" : "./node_content",
+			"label" : "Node Content",
 			"recursive" : 1,
 			"enabled" : 1,
 			"includeincollective" : 1
