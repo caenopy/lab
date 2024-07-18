@@ -4,10 +4,15 @@ inlets = 1;
 outlets = 1;
 
 var clips = []; 
+var currTimeInSeconds = 0;
 
 function list() {
     clips = arguments;
     post("(getClipNotesFromState.js) Setting clip_ids to: ", clips, "\n");
+}
+
+function setCurrTime(time) {
+    currTimeInSeconds = time;
 }
 
 function printClips() {
@@ -59,6 +64,9 @@ function getNotesFromClips(jsonData, clipIds) {
 
     post("(getClipNotesFromState.js) using clipIds: ", clips, "\n");
 
+    // TODO: change to only send notes after currTimeInSeconds
+    // TODO: don't write out chord track
+
     jsonData.forEach(function(track) {
         track.clips.forEach(function(clip) {
             for (var i = 0; i < clipIds.length; i++) {
@@ -72,6 +80,7 @@ function getNotesFromClips(jsonData, clipIds) {
                             note.velocity,
                         ].join(' ');
                         notesList.push(noteString);
+                        post(currTimeInSeconds, "\n");
                         outlet(0, noteString);
                     });
                 }

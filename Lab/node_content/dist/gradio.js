@@ -34,7 +34,7 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 
 // node_modules/node-gyp-build/node-gyp-build.js
 var require_node_gyp_build = __commonJS({
-  "node_modules/node-gyp-build/node-gyp-build.js"(exports, module2) {
+  "node_modules/node-gyp-build/node-gyp-build.js"(exports2, module2) {
     var fs2 = require("fs");
     var path2 = require("path");
     var os = require("os");
@@ -56,24 +56,19 @@ var require_node_gyp_build = __commonJS({
       dir = path2.resolve(dir || ".");
       try {
         var name = runtimeRequire(path2.join(dir, "package.json")).name.toUpperCase().replace(/-/g, "_");
-        if (process.env[name + "_PREBUILD"])
-          dir = process.env[name + "_PREBUILD"];
+        if (process.env[name + "_PREBUILD"]) dir = process.env[name + "_PREBUILD"];
       } catch (err) {
       }
       if (!prebuildsOnly) {
         var release = getFirst(path2.join(dir, "build/Release"), matchBuild);
-        if (release)
-          return release;
+        if (release) return release;
         var debug = getFirst(path2.join(dir, "build/Debug"), matchBuild);
-        if (debug)
-          return debug;
+        if (debug) return debug;
       }
       var prebuild = resolve(dir);
-      if (prebuild)
-        return prebuild;
+      if (prebuild) return prebuild;
       var nearby = resolve(path2.dirname(process.execPath));
-      if (nearby)
-        return nearby;
+      if (nearby) return nearby;
       var target = [
         "platform=" + platform,
         "arch=" + arch,
@@ -91,14 +86,12 @@ var require_node_gyp_build = __commonJS({
       function resolve(dir2) {
         var tuples = readdirSync(path2.join(dir2, "prebuilds")).map(parseTuple);
         var tuple = tuples.filter(matchTuple(platform, arch)).sort(compareTuples)[0];
-        if (!tuple)
-          return;
+        if (!tuple) return;
         var prebuilds = path2.join(dir2, "prebuilds", tuple.name);
         var parsed = readdirSync(prebuilds).map(parseTags);
         var candidates = parsed.filter(matchTags(runtime, abi));
         var winner = candidates.sort(compareTags(runtime))[0];
-        if (winner)
-          return path2.join(prebuilds, winner.file);
+        if (winner) return path2.join(prebuilds, winner.file);
       }
     };
     function readdirSync(dir) {
@@ -117,24 +110,18 @@ var require_node_gyp_build = __commonJS({
     }
     function parseTuple(name) {
       var arr = name.split("-");
-      if (arr.length !== 2)
-        return;
+      if (arr.length !== 2) return;
       var platform2 = arr[0];
       var architectures = arr[1].split("+");
-      if (!platform2)
-        return;
-      if (!architectures.length)
-        return;
-      if (!architectures.every(Boolean))
-        return;
+      if (!platform2) return;
+      if (!architectures.length) return;
+      if (!architectures.every(Boolean)) return;
       return { name, platform: platform2, architectures };
     }
     function matchTuple(platform2, arch2) {
       return function(tuple) {
-        if (tuple == null)
-          return false;
-        if (tuple.platform !== platform2)
-          return false;
+        if (tuple == null) return false;
+        if (tuple.platform !== platform2) return false;
         return tuple.architectures.includes(arch2);
       };
     }
@@ -145,8 +132,7 @@ var require_node_gyp_build = __commonJS({
       var arr = file.split(".");
       var extension2 = arr.pop();
       var tags = { file, specificity: 0 };
-      if (extension2 !== "node")
-        return;
+      if (extension2 !== "node") return;
       for (var i = 0; i < arr.length; i++) {
         var tag = arr[i];
         if (tag === "node" || tag === "electron" || tag === "node-webkit") {
@@ -170,18 +156,12 @@ var require_node_gyp_build = __commonJS({
     }
     function matchTags(runtime2, abi2) {
       return function(tags) {
-        if (tags == null)
-          return false;
-        if (tags.runtime && tags.runtime !== runtime2 && !runtimeAgnostic(tags))
-          return false;
-        if (tags.abi && tags.abi !== abi2 && !tags.napi)
-          return false;
-        if (tags.uv && tags.uv !== uv)
-          return false;
-        if (tags.armv && tags.armv !== armv)
-          return false;
-        if (tags.libc && tags.libc !== libc)
-          return false;
+        if (tags == null) return false;
+        if (tags.runtime && tags.runtime !== runtime2 && !runtimeAgnostic(tags)) return false;
+        if (tags.abi && tags.abi !== abi2 && !tags.napi) return false;
+        if (tags.uv && tags.uv !== uv) return false;
+        if (tags.armv && tags.armv !== armv) return false;
+        if (tags.libc && tags.libc !== libc) return false;
         return true;
       };
     }
@@ -205,10 +185,8 @@ var require_node_gyp_build = __commonJS({
       return !!(process.versions && process.versions.nw);
     }
     function isElectron() {
-      if (process.versions && process.versions.electron)
-        return true;
-      if (process.env.ELECTRON_RUN_AS_NODE)
-        return true;
+      if (process.versions && process.versions.electron) return true;
+      if (process.env.ELECTRON_RUN_AS_NODE) return true;
       return typeof window !== "undefined" && window.process && window.process.type === "renderer";
     }
     function isAlpine(platform2) {
@@ -225,7 +203,7 @@ var require_node_gyp_build = __commonJS({
 
 // node_modules/node-gyp-build/index.js
 var require_node_gyp_build2 = __commonJS({
-  "node_modules/node-gyp-build/index.js"(exports, module2) {
+  "node_modules/node-gyp-build/index.js"(exports2, module2) {
     var runtimeRequire = typeof __webpack_require__ === "function" ? __non_webpack_require__ : require;
     if (typeof runtimeRequire.addon === "function") {
       module2.exports = runtimeRequire.addon.bind(runtimeRequire);
@@ -237,7 +215,7 @@ var require_node_gyp_build2 = __commonJS({
 
 // node_modules/bufferutil/fallback.js
 var require_fallback = __commonJS({
-  "node_modules/bufferutil/fallback.js"(exports, module2) {
+  "node_modules/bufferutil/fallback.js"(exports2, module2) {
     "use strict";
     var mask2 = (source, mask3, output, offset, length) => {
       for (var i = 0; i < length; i++) {
@@ -256,7 +234,7 @@ var require_fallback = __commonJS({
 
 // node_modules/bufferutil/index.js
 var require_bufferutil = __commonJS({
-  "node_modules/bufferutil/index.js"(exports, module2) {
+  "node_modules/bufferutil/index.js"(exports2, module2) {
     "use strict";
     try {
       module2.exports = require_node_gyp_build2()(__dirname);
@@ -3729,7 +3707,7 @@ var init_wrapper_6f348d45 = __esm({
 
 // node_modules/eventsource/lib/eventsource.js
 var require_eventsource = __commonJS({
-  "node_modules/eventsource/lib/eventsource.js"(exports, module2) {
+  "node_modules/eventsource/lib/eventsource.js"(exports2, module2) {
     var parse2 = require("url").parse;
     var events = require("events");
     var https2 = require("https");
@@ -3777,8 +3755,7 @@ var require_eventsource = __commonJS({
       self.reconnectInterval = 1e3;
       self.connectionInProgress = false;
       function onConnectionClosed(message) {
-        if (readyState === EventSource2.CLOSED)
-          return;
+        if (readyState === EventSource2.CLOSED) return;
         readyState = EventSource2.CONNECTING;
         _emit("error", new Event2("error", { message }));
         if (reconnectUrl) {
@@ -3808,8 +3785,7 @@ var require_eventsource = __commonJS({
         var options = parse2(url);
         var isSecure = options.protocol === "https:";
         options.headers = { "Cache-Control": "no-cache", "Accept": "text/event-stream" };
-        if (lastEventId)
-          options.headers["Last-Event-ID"] = lastEventId;
+        if (lastEventId) options.headers["Last-Event-ID"] = lastEventId;
         if (headers) {
           var reqHeaders = hasNewOrigin ? removeUnsafeHeaders(headers) : headers;
           for (var i in reqHeaders) {
@@ -3864,8 +3840,7 @@ var require_eventsource = __commonJS({
             var prevOrigin = new URL(url).origin;
             var nextOrigin = new URL(location2).origin;
             hasNewOrigin = prevOrigin !== nextOrigin;
-            if (res.statusCode === 307)
-              reconnectUrl = url;
+            if (res.statusCode === 307) reconnectUrl = url;
             url = location2;
             process.nextTick(connect);
             return;
@@ -3961,8 +3936,7 @@ var require_eventsource = __commonJS({
           self.connectionInProgress = false;
           onConnectionClosed(err.message);
         });
-        if (req.setNoDelay)
-          req.setNoDelay(true);
+        if (req.setNoDelay) req.setNoDelay(true);
         req.end();
       }
       connect();
@@ -3972,13 +3946,10 @@ var require_eventsource = __commonJS({
         }
       }
       this._close = function() {
-        if (readyState === EventSource2.CLOSED)
-          return;
+        if (readyState === EventSource2.CLOSED) return;
         readyState = EventSource2.CLOSED;
-        if (req.abort)
-          req.abort();
-        if (req.xhr && req.xhr.abort)
-          req.xhr.abort();
+        if (req.abort) req.abort();
+        if (req.xhr && req.xhr.abort) req.xhr.abort();
       };
       function parseEventStreamLine(buf, pos, fieldLength, lineLength) {
         if (lineLength === 0) {
@@ -5546,10 +5517,11 @@ function openFileAsJson(filePath) {
     return null;
   }
 }
-async function sendState() {
+async function sendState(currTimeInSeconds) {
   maxAPI.post("Generate: sending to Gradio");
   maxAPI.post("model: " + model);
   maxAPI.post("topP: " + topP);
+  maxAPI.post("currTimeInSeconds: " + currTimeInSeconds);
   var filePath = path.join(patcherpath, "../../tmp/OutgoingArrangementState.json");
   if (filePath.startsWith("Macintosh HD:")) {
     filePath = filePath.replace("Macintosh HD:", "");
@@ -5557,7 +5529,7 @@ async function sendState() {
   const app = await client(args[0]);
   var tracks = openFileAsJson(filePath);
   maxAPI.post(tracks.length);
-  const job = app.submit("/predict", [model, JSON.stringify(tracks), topP]);
+  const job = app.submit("/predict", [model, currTimeInSeconds, JSON.stringify(tracks), topP]);
   job.on("data", (data) => {
     const incomingArrangementState = JSON.stringify(data.data[0]);
     const filePath2 = path.join(patcherpath, "../../tmp/IncomingArrangementState.json");
@@ -5588,8 +5560,8 @@ maxAPI.addHandler("cancel", () => {
     jobs.pop();
   }
 });
-maxAPI.addHandler("sendState", () => {
-  sendState();
+maxAPI.addHandler("sendState", (currTimeInSeconds) => {
+  sendState(currTimeInSeconds);
 });
 maxAPI.addHandler("setPath", (path2) => {
   if (path2.startsWith("Macintosh HD:")) {

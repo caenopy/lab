@@ -30,10 +30,11 @@ function openFileAsJson(filePath: string): any {
   }
 }
 
-async function sendState() {
+async function sendState(currTimeInSeconds: number) {
   maxAPI.post("Generate: sending to Gradio");
   maxAPI.post("model: " + model);
   maxAPI.post("topP: " + topP);
+  maxAPI.post("currTimeInSeconds: " + currTimeInSeconds);
 
   var filePath = path.join(patcherpath, '../../tmp/OutgoingArrangementState.json');
 
@@ -49,7 +50,7 @@ async function sendState() {
 
   maxAPI.post(tracks.length);
   
-  const job = app.submit("/predict", [model, JSON.stringify(tracks), topP])
+  const job = app.submit("/predict", [model, currTimeInSeconds, JSON.stringify(tracks), topP])
   
   job.on("data", (data) => {
     const incomingArrangementState = JSON.stringify(data.data[0]);
@@ -86,8 +87,8 @@ maxAPI.addHandler('cancel', () => {
   }
 });
 
-maxAPI.addHandler('sendState', () => {
-  sendState();
+maxAPI.addHandler('sendState', (currTimeInSeconds: number) => {
+  sendState(currTimeInSeconds);
 });
 
 maxAPI.addHandler('setPath', (path: string) => {
