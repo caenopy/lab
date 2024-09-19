@@ -12,7 +12,7 @@ global.EventSource = require('eventsource');
 const args = process.argv.slice(2)
 // now args[0] is the name of the HF Space or URL of Gradio app
 
-var topP = 0.95;
+var topP = 0.99;
 var model = "small";
 
 var patcherpath = "";
