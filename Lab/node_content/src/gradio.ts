@@ -12,8 +12,10 @@ global.EventSource = require('eventsource');
 const args = process.argv.slice(2)
 // now args[0] is the name of the HF Space or URL of Gradio app
 
+// Note: these defaults must match the Lab device and Gradio backend defaults.
 var topP = 0.99;
 var model = "small";
+var temperature = 1.0;
 
 var patcherpath = "";
 
@@ -34,6 +36,7 @@ async function sendState(currTimeInSeconds: number) {
   maxAPI.post("Generate: sending to Gradio");
   maxAPI.post("model: " + model);
   maxAPI.post("topP: " + topP);
+  maxAPI.post("temperature: " + temperature);
   maxAPI.post("currTimeInSeconds: " + currTimeInSeconds);
 
   var filePath = path.join(patcherpath, '../../tmp/OutgoingArrangementState.json');
@@ -50,7 +53,7 @@ async function sendState(currTimeInSeconds: number) {
 
   maxAPI.post(tracks.length);
   
-  const job = app.submit("/predict", [model, currTimeInSeconds, JSON.stringify(tracks), topP])
+  const job = app.submit("/predict", [model, currTimeInSeconds, JSON.stringify(tracks), topP, temperature])
   
   job.on("data", (data) => {
     const incomingArrangementState = JSON.stringify(data.data[0]);
@@ -74,6 +77,10 @@ maxAPI.addHandler('setTopP', (inputTopP: number) => {
 
 maxAPI.addHandler('setModel', (inputModel: string) => {
   model = inputModel;
+});
+
+maxAPI.addHandler('setTemperature', (inputTemperature: number) => {
+  temperature = inputTemperature;
 });
 
 maxAPI.addHandler('cancel', () => {

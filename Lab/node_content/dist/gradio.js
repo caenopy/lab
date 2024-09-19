@@ -5505,6 +5505,7 @@ global.EventSource = require_eventsource();
 var args = process.argv.slice(2);
 var topP = 0.99;
 var model = "small";
+var temperature = 1;
 var patcherpath = "";
 var jobs = [];
 function openFileAsJson(filePath) {
@@ -5521,6 +5522,7 @@ async function sendState(currTimeInSeconds) {
   maxAPI.post("Generate: sending to Gradio");
   maxAPI.post("model: " + model);
   maxAPI.post("topP: " + topP);
+  maxAPI.post("temperature: " + temperature);
   maxAPI.post("currTimeInSeconds: " + currTimeInSeconds);
   var filePath = path.join(patcherpath, "../../tmp/OutgoingArrangementState.json");
   if (filePath.startsWith("Macintosh HD:")) {
@@ -5529,7 +5531,7 @@ async function sendState(currTimeInSeconds) {
   const app = await client(args[0]);
   var tracks = openFileAsJson(filePath);
   maxAPI.post(tracks.length);
-  const job = app.submit("/predict", [model, currTimeInSeconds, JSON.stringify(tracks), topP]);
+  const job = app.submit("/predict", [model, currTimeInSeconds, JSON.stringify(tracks), topP, temperature]);
   job.on("data", (data) => {
     const incomingArrangementState = JSON.stringify(data.data[0]);
     const filePath2 = path.join(patcherpath, "../../tmp/IncomingArrangementState.json");
@@ -5549,6 +5551,9 @@ maxAPI.addHandler("setTopP", (inputTopP) => {
 });
 maxAPI.addHandler("setModel", (inputModel) => {
   model = inputModel;
+});
+maxAPI.addHandler("setTemperature", (inputTemperature) => {
+  temperature = inputTemperature;
 });
 maxAPI.addHandler("cancel", () => {
   if (jobs.length == 0) {
