@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 347.0, 100.0, 501.0, 236.0 ],
+		"rect" : [ 34.0, 100.0, 919.0, 848.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -858,7 +858,7 @@
 						"valueof" : 						{
 							"parameter_annotation_name" : "Temperature Selector",
 							"parameter_info" : "Higher temperatures flatten the note probability distribution, making less likely notes more probable. This results in more randomness and diversity in the output.",
-							"parameter_initial" : [ 0 ],
+							"parameter_initial" : [ 1.0 ],
 							"parameter_initial_enable" : 1,
 							"parameter_invisible" : 2,
 							"parameter_linknames" : 1,
@@ -929,7 +929,7 @@
 							"parameter_annotation_name" : "Top P",
 							"parameter_exponent" : 3.5,
 							"parameter_info" : "Set top P for nucleus sampling.",
-							"parameter_initial" : [ 0.95 ],
+							"parameter_initial" : [ 0.99 ],
 							"parameter_initial_enable" : 1,
 							"parameter_linknames" : 1,
 							"parameter_longname" : "live.dial[1]",
@@ -1308,7 +1308,28 @@
 			"inherited_shortname" : 1
 		}
 ,
-		"dependency_cache" : [  ],
+		"dependency_cache" : [ 			{
+				"name" : "drawTracks.js",
+				"bootpath" : "~/Desktop/anticipation/lab/Lab/code",
+				"patcherrelativepath" : "../code",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "getTrackInfo.js",
+				"bootpath" : "~/Desktop/anticipation/lab/Lab/code",
+				"patcherrelativepath" : "../code",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "multimap-unmap.svg",
+				"bootpath" : "~/Desktop/anticipation/lab/Lab/media",
+				"patcherrelativepath" : "../media",
+				"type" : "svg",
+				"implicit" : 1
+			}
+ ],
 		"autosave" : 0,
 		"bgcolor" : [ 0.129412, 0.129412, 0.129412, 1.0 ],
 		"editing_bgcolor" : [ 0.129412, 0.129412, 0.129412, 1.0 ],
