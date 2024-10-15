@@ -8,11 +8,12 @@ var timeSelectionStart;
 var timeSelectionLength;
 var DEBUG = false;
 
-function Track(id, name, instrument, clips) {
+function Track(id, name, instrument, clips, tempo) {
     this.id = id;
     this.name = name;
     this.instrument = instrument;
     this.clips = clips; // list of clips
+    this.tempo = tempo;
 }
 
 function Clip(id, name, start_time, end_time, notes) {
@@ -41,6 +42,9 @@ function getNotesInLoop() {
     var loopStartTime = parseFloat(liveSet.get("loop_start"));
     var loopLength = parseFloat(liveSet.get("loop_length"));
     var loopEndTime = loopStartTime + loopLength;
+
+    // Assume tempo is not automated, important for live models
+    var tempo = parseFloat(liveSet.get("tempo"));
 
     var trackInfo = new Dict("trackInfo");
     var numMidiTracks = trackInfo.getkeys().length;
@@ -97,7 +101,7 @@ function getNotesInLoop() {
             inst_i = i; 
         }
 
-        var track = new Track(trackApi.id, trackName_i, inst_i, []);
+        var track = new Track(trackApi.id, trackName_i, inst_i, [], tempo);
 
         for (var j = 0; j < numClips; j++) {
             var clipId = arrangementClipIDs[1 + 2*j];
