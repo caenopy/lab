@@ -1940,8 +1940,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 1836.861662596464157, 2276.600958466529846, 50.0, 20.0 ],
-					"text" : "metro 15"
+					"patching_rect" : [ 1836.861662596464157, 2276.600958466529846, 45.0, 20.0 ],
+					"text" : "metro 5"
 				}
 
 			}
